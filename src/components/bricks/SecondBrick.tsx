@@ -13,7 +13,7 @@ type RendererProps = {
   completed: boolean;
 };
 
-const nextLaunch = 1690081440000;
+const nextLaunch = 1690079640000;
 const options = {
   weekday: "long",
   day: "numeric",
@@ -63,7 +63,7 @@ export const SecondBrick = () => {
         <p className="box-title">Prochain lancement</p>
         <div className="box-body p-2 text-center">
           <div className="box p-2">
-            <div className="box-title text-start">Aperçu</div>
+            <div className="box-title text-start">Falcon Heavy</div>
             <div className="box-body">
               <div className="d-flex justify-content-center gap-3">
                 <ThreeDCanvas models={['./rocket.glb']} />

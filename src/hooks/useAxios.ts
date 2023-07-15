@@ -4,8 +4,8 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://api.spacexdata.com';
 
 const useAxios = (endpoint: string) => {
-    const [response, setResponse] = useState(null);
-    const [error, setError] = useState('');
+    const [response, setResponse] = useState();
+    const [error, setError] = useState();
     const [loading, setloading] = useState(true);
 
     const fetchData = () => {
