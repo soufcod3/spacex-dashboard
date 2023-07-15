@@ -50,7 +50,7 @@ const ROCKETS: IRocket[] = [
 
 export const FirstBrick = () => {
   return (
-    <Brick style={{ height: "280px" }}>
+    <Brick style={{ maxHeight: "285px" }}>
       <div className="box p-2 mb-2">
         <p className="box-title">Informations générales</p>
         <div className="box-body p-2">
