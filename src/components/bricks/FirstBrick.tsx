@@ -80,9 +80,9 @@ export const FirstBrick = () => {
         </div>
         <div className="box-body">
           <div className="d-flex gap-2 overflow-x-auto">
-            {ROCKETS.map((rocket) => {
+            {ROCKETS.map((rocket, idx) => {
               return (
-                <div className="box text-center p-2">
+                <div className="box text-center p-2" key={idx}>
                   <span className="circle-info"><FontAwesomeIcon icon={faInfo} /></span>
                   <img src={rocket.image} alt="" width={"25px"} />
                   <small className="rocket-name">{rocket.name}</small>
