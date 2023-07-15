@@ -3,7 +3,6 @@ import useAxios from "../../hooks/useAxios";
 import { BarChart } from "../BarChart";
 import { Brick } from "../Brick";
 import { ILaunch } from "../interfaces";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale } from "chart.js";
 
 const ROCKETS = {
   '5e9d0d95eda69955f709d1eb' : 'Falcon 1',
@@ -50,7 +49,7 @@ export const ThirdBrick = () => {
           {
             label: "Type de fusée",
             data: Object.values(launchesPerYear).map((rocketTypeCounts) => Object.values(rocketTypeCounts).reduce((a, b) => a + b, 0)),
-            backgroundColor: "rgba(255, 255, 255, 0.6)",
+            backgroundColor: "rgb(255, 255, 255)",
           },
         ],
         rocketTypes: Object.values(rocketTypes),
@@ -59,8 +58,6 @@ export const ThirdBrick = () => {
   }, [fetchedData]);
 
   useEffect(() => response && setFetchedData(response), [response]);
-
-  useEffect(() => console.log("chartData", chartData), [chartData]);
 
   return (
     <Brick style={{ height: "285px" }}>

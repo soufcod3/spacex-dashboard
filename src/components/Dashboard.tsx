@@ -6,11 +6,11 @@ import { ForthBrick } from "./bricks/ForthBrick";
 import { FifthBrick } from "./bricks/FifthBrick";
 import { Row } from "react-bootstrap";
 
-import bg1 from '../assets/bg-1.webp'
+import sky from '../assets/sky.jpg'
 
 export const Dashboard = () => {
   return (
-    <section className="dashboard d-flex flex-wrap p-2 px-4" style={{ backgroundImage: `url(${bg1})` }}>
+    <section className="dashboard d-flex flex-wrap p-2 px-4" style={{ backgroundImage: `url(${sky})` }}>
       <Row className="brick-row d-flex">
         <FirstBrick />
         <SecondBrick />
