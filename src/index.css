@@ -67,3 +67,11 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@font-face {
+  font-family: "ForcedSquare";
+  src: local("ForcedSquare"),
+   url("./fonts/forced-square.ttf") format("truetype");
+  font-weight: normal;
+ }
+ 
