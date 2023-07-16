@@ -1,4 +1,3 @@
-import React from "react";
 import { FirstBrick } from "./bricks/FirstBrick";
 import { SecondBrick } from "./bricks/SecondBrick";
 import { ThirdBrick } from "./bricks/ThirdBrick";

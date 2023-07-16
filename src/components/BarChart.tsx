@@ -42,9 +42,7 @@ export const BarChart = ({ chartData }: BarChartProps) => {
       tooltip: {
         callbacks: {
           label: (context) => {
-            const label = context.label || "";
             const index = context.dataIndex ?? 0;
-            const dataset = context.dataset ?? {};
 
             // Get the rocket types for the corresponding year
             const rocketTypes = chartData?.rocketTypes ?? [];

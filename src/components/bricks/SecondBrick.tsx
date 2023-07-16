@@ -1,7 +1,7 @@
 import { Brick } from "../Brick";
 import Countdown from "react-countdown";
 import { Datum } from "../Datum";
-import { ThreeDCanvas, ThreeDModel } from "../ThreeDCanvas";
+import { ThreeDCanvas } from "../ThreeDCanvas";
 
 const Completionist = () => <span>Lancement imminent !</span>;
 
@@ -14,7 +14,7 @@ type RendererProps = {
 };
 
 const nextLaunch = 1690079640000;
-const options = {
+const options: Intl.DateTimeFormatOptions = {
   weekday: "long",
   day: "numeric",
   month: "long",

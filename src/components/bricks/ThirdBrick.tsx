@@ -13,7 +13,7 @@ const ROCKETS = {
 }
 
 export const ThirdBrick = () => {
-  const { response, error, loading } = useAxios("/v5/launches");
+  const { response } = useAxios("/v5/launches");
   const [fetchedData, setFetchedData] = useState<Array<ILaunch>>([]);
   const [chartData, setChartData] = useState<any>();
 
@@ -61,10 +61,10 @@ export const ThirdBrick = () => {
   useEffect(() => response && setFetchedData(response), [response]);
 
   return (
-    <Brick style={{ height: "285px" }}>
+    <Brick>
       <div className="box p-2">
         <div className="box-title">Historique des lancements</div>
-        <div className="box-body p-2">
+        <div className="box-body p-1">
           {chartData ? <BarChart chartData={chartData} /> : <Loading />}
         </div>
       </div>

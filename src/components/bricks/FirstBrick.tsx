@@ -14,11 +14,11 @@ import { useEffect, useState } from "react";
 import { IRocket } from "../interfaces";
 import { Loading } from "../Loading";
 
-enum ROCKET_IMG {
-  "Falcon 1" = falcon1,
-  "Falcon 9" = falcon9,
-  "Falcon Heavy" = falconheavy,
-  "Starship" = starshipImg,
+const ROCKET_IMG = {
+  "Falcon 1": falcon1,
+  "Falcon 9": falcon9,
+  "Falcon Heavy": falconheavy,
+  "Starship": starshipImg,
 }
 
 const tooltip = (rocket: IRocket) => {
@@ -36,7 +36,7 @@ export const FirstBrick = () => {
 
   const { response: rockets } = useAxios("/v4/rockets");
 
-  const [locRockets, setLocRockets] = useState([]);
+  const [locRockets, setLocRockets] = useState<Array<IRocket>>([]);
 
   useEffect(() => {
     if (rockets) {

@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import spaceXLogo from "../assets/spacex-logo.png";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { GrDocumentDownload } from "react-icons/gr";

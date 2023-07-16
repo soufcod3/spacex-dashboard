@@ -2,16 +2,14 @@ import { useCallback, useState } from "react";
 import { Brick } from "../Brick";
 import { GoogleMapsProvider } from "@ubilabs/google-maps-react-hooks";
 import useAxios from "../../hooks/useAxios";
-import {
-  MarkerClusterer,
-  SuperClusterAlgorithm,
-} from "@googlemaps/markerclusterer";
 
 import purplePin from "../../assets/pin-purple.png";
 import yellowPin from "../../assets/pin-yellow.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocation, faLocationPin } from "@fortawesome/free-solid-svg-icons";
+import { faLocationPin } from "@fortawesome/free-solid-svg-icons";
 import { Loading } from "../Loading";
+
+let google:any
 
 const styles = [
   {
@@ -186,20 +184,17 @@ const mapOptions = {
 export const ForthBrick = () => {
   const {
     response: launchpads,
-    error: launchpadsError,
-    loading: launchpadsLoading,
   } = useAxios("/v4/launchpads");
   const {
     response: landpads,
-    error: landpadsError,
-    loading: landpadsLoading,
   } = useAxios("/v4/landpads");
 
-  const [mapContainer, setMapContainer] = useState();
+  const [mapContainer, setMapContainer] = useState<HTMLDivElement | null>();
   const onLoad = useCallback(
     (map) => addMarkers(map, launchpads, landpads),
     [launchpads, landpads]
   );
+  
 
   return (
     <Brick md={8} mb={1} style={{ flex: "2", height: "300px" }}>
@@ -258,7 +253,7 @@ function addMarkers(map, launchpads, landpads) {
   if (launchpads && landpads) {
     const infoWindow = new google.maps.InfoWindow();
 
-    let markers = [];
+    let markers: any[] = [];
     launchpads.forEach((launchpad) => {
       const lat = launchpad.latitude;
       const lng = launchpad.longitude;

@@ -10,7 +10,6 @@ type BrickProps = {
 
 export const Brick = ({
   md = 4,
-  mb = 1,
   children,
   style,
   lastBrick = false,
