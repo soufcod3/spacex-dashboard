@@ -7,171 +7,171 @@ import {
   SuperClusterAlgorithm,
 } from "@googlemaps/markerclusterer";
 
-import purplePin from '../../assets/pin-purple.png'
-import yellowPin from '../../assets/pin-yellow.png'
+import purplePin from "../../assets/pin-purple.png";
+import yellowPin from "../../assets/pin-yellow.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocation, faLocationPin } from "@fortawesome/free-solid-svg-icons";
 
 const styles = [
   {
-    "elementType": "geometry",
-    "stylers": [
+    elementType: "geometry",
+    stylers: [
       {
-        "color": "#f5f5f5"
-      }
-    ]
+        color: "#f5f5f5",
+      },
+    ],
   },
   {
-    "elementType": "labels.icon",
-    "stylers": [
+    elementType: "labels.icon",
+    stylers: [
       {
-        "visibility": "off"
-      }
-    ]
+        visibility: "off",
+      },
+    ],
   },
   {
-    "elementType": "labels.text.fill",
-    "stylers": [
+    elementType: "labels.text.fill",
+    stylers: [
       {
-        "color": "#616161"
-      }
-    ]
+        color: "#616161",
+      },
+    ],
   },
   {
-    "elementType": "labels.text.stroke",
-    "stylers": [
+    elementType: "labels.text.stroke",
+    stylers: [
       {
-        "color": "#f5f5f5"
-      }
-    ]
+        color: "#f5f5f5",
+      },
+    ],
   },
   {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels.text.fill",
-    "stylers": [
+    featureType: "administrative.land_parcel",
+    elementType: "labels.text.fill",
+    stylers: [
       {
-        "color": "#bdbdbd"
-      }
-    ]
+        color: "#bdbdbd",
+      },
+    ],
   },
   {
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
+    featureType: "poi",
+    elementType: "geometry",
+    stylers: [
       {
-        "color": "#eeeeee"
-      }
-    ]
+        color: "#eeeeee",
+      },
+    ],
   },
   {
-    "featureType": "poi",
-    "elementType": "labels.text.fill",
-    "stylers": [
+    featureType: "poi",
+    elementType: "labels.text.fill",
+    stylers: [
       {
-        "color": "#757575"
-      }
-    ]
+        color: "#757575",
+      },
+    ],
   },
   {
-    "featureType": "poi.park",
-    "elementType": "geometry",
-    "stylers": [
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [
       {
-        "color": "#e5e5e5"
-      }
-    ]
+        color: "#e5e5e5",
+      },
+    ],
   },
   {
-    "featureType": "poi.park",
-    "elementType": "labels.text.fill",
-    "stylers": [
+    featureType: "poi.park",
+    elementType: "labels.text.fill",
+    stylers: [
       {
-        "color": "#9e9e9e"
-      }
-    ]
+        color: "#9e9e9e",
+      },
+    ],
   },
   {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
       {
-        "color": "#ffffff"
-      }
-    ]
+        color: "#ffffff",
+      },
+    ],
   },
   {
-    "featureType": "road.arterial",
-    "elementType": "labels.text.fill",
-    "stylers": [
+    featureType: "road.arterial",
+    elementType: "labels.text.fill",
+    stylers: [
       {
-        "color": "#757575"
-      }
-    ]
+        color: "#757575",
+      },
+    ],
   },
   {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [
       {
-        "color": "#dadada"
-      }
-    ]
+        color: "#dadada",
+      },
+    ],
   },
   {
-    "featureType": "road.highway",
-    "elementType": "labels.text.fill",
-    "stylers": [
+    featureType: "road.highway",
+    elementType: "labels.text.fill",
+    stylers: [
       {
-        "color": "#616161"
-      }
-    ]
+        color: "#616161",
+      },
+    ],
   },
   {
-    "featureType": "road.local",
-    "elementType": "labels.text.fill",
-    "stylers": [
+    featureType: "road.local",
+    elementType: "labels.text.fill",
+    stylers: [
       {
-        "color": "#9e9e9e"
-      }
-    ]
+        color: "#9e9e9e",
+      },
+    ],
   },
   {
-    "featureType": "transit.line",
-    "elementType": "geometry",
-    "stylers": [
+    featureType: "transit.line",
+    elementType: "geometry",
+    stylers: [
       {
-        "color": "#e5e5e5"
-      }
-    ]
+        color: "#e5e5e5",
+      },
+    ],
   },
   {
-    "featureType": "transit.station",
-    "elementType": "geometry",
-    "stylers": [
+    featureType: "transit.station",
+    elementType: "geometry",
+    stylers: [
       {
-        "color": "#eeeeee"
-      }
-    ]
+        color: "#eeeeee",
+      },
+    ],
   },
   {
-    "featureType": "water",
-    "elementType": "geometry",
-    "stylers": [
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [
       {
-        "color": "#c9c9c9"
-      }
-    ]
+        color: "#c9c9c9",
+      },
+    ],
   },
   {
-    "featureType": "water",
-    "elementType": "labels.text.fill",
-    "stylers": [
+    featureType: "water",
+    elementType: "labels.text.fill",
+    stylers: [
       {
-        "color": "#9e9e9e"
-      }
-    ]
-  }
-]
+        color: "#9e9e9e",
+      },
+    ],
+  },
+];
 
 const mapOptions = {
   // Add your map options here
@@ -179,14 +179,22 @@ const mapOptions = {
   center: { lat: 32.715736, lng: -117.161087 },
   zoom: 3,
   styles,
-  disableDefaultUI: true
+  disableDefaultUI: true,
 };
 
 export const ForthBrick = () => {
-  const { response: launchpads, error: launchpadsError, loading: launchpadsLoading } = useAxios("/v4/launchpads");
-  const { response: landpads, error: landpadsError, loading: landpadsLoading } = useAxios("/v4/landpads");
+  const {
+    response: launchpads,
+    error: launchpadsError,
+    loading: launchpadsLoading,
+  } = useAxios("/v4/launchpads");
+  const {
+    response: landpads,
+    error: landpadsError,
+    loading: landpadsLoading,
+  } = useAxios("/v4/landpads");
 
-  console.log(landpads)
+  console.log(landpads);
   const [mapContainer, setMapContainer] = useState();
   const onLoad = useCallback(
     (map) => addMarkers(map, launchpads, landpads),
@@ -198,31 +206,34 @@ export const ForthBrick = () => {
       <div className="box p-2 h-100">
         <div className="box-title">Zones de décollage et d'atterissage</div>
         <div className="box-body p-2 h-100 d-flex gap-2">
-            <div className="box h-100 p-2 col-2">
-              <div className="box-title">Légende</div>
-              <div className="box-body p-2">
-                <div className="d-flex gap-2 align-items-center mb-2">
-                  <FontAwesomeIcon icon={faLocationPin} className="text-warning"/>
-                  <small className="wrap">Zones de décollage</small>
-                </div>
-                <div className="d-flex gap-2 align-items-center">
-                  <FontAwesomeIcon icon={faLocationPin} className="text-purple"/>
-                  <small className="wrap">Zones d'atterissage</small>
-                </div>
+          <div className="box h-100 p-2 col-2">
+            <div className="box-title">Légende</div>
+            <div className="box-body p-2">
+              <div className="d-flex gap-2 align-items-center mb-2">
+                <FontAwesomeIcon
+                  icon={faLocationPin}
+                  className="text-warning"
+                />
+                <small className="wrap">Zones de décollage</small>
+              </div>
+              <div className="d-flex gap-2 align-items-center">
+                <FontAwesomeIcon icon={faLocationPin} className="text-purple" />
+                <small className="wrap">Zones d'atterissage</small>
               </div>
             </div>
-            <div className="box col-10 p-2">
+          </div>
+          <div className="box col-10 p-2">
             <GoogleMapsProvider
-            googleMapsAPIKey="AIzaSyD3fBQWhzYo-W5j0h4Rob5lihe2WECC_CA"
-            mapContainer={mapContainer}
-            mapOptions={mapOptions}
-            onLoadMap={onLoad}
-          >
-            <div
-              ref={(node) => setMapContainer(node)}
-              style={{ height: "100%", width: "100%" }}
-            ></div>
-          </GoogleMapsProvider>
+              googleMapsAPIKey="AIzaSyD3fBQWhzYo-W5j0h4Rob5lihe2WECC_CA"
+              mapContainer={mapContainer}
+              mapOptions={mapOptions}
+              onLoadMap={onLoad}
+            >
+              <div
+                ref={(node) => setMapContainer(node)}
+                style={{ height: "100%", width: "100%" }}
+              ></div>
+            </GoogleMapsProvider>
           </div>
         </div>
       </div>
@@ -234,14 +245,14 @@ function addMarkers(map, landpads, launchpads) {
   if (launchpads && landpads) {
     const infoWindow = new google.maps.InfoWindow();
 
-    let markers = []
+    let markers = [];
     launchpads.forEach((launchpad) => {
       const lat = launchpad.latitude;
       const lng = launchpad.longitude;
       const marker = new google.maps.Marker({
         map,
         position: { lat, lng },
-        icon: yellowPin
+        icon: yellowPin,
       });
 
       marker.addListener("click", () => {
@@ -264,7 +275,7 @@ function addMarkers(map, landpads, launchpads) {
       const marker = new google.maps.Marker({
         map,
         position: { lat, lng },
-        icon: purplePin
+        icon: purplePin,
       });
 
       marker.addListener("click", () => {
