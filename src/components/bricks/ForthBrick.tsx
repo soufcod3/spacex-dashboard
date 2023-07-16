@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useCallback, useState } from "react";
 import { Brick } from "../Brick";
 import { GoogleMapsProvider } from "@ubilabs/google-maps-react-hooks";
@@ -8,8 +9,6 @@ import yellowPin from "../../assets/pin-yellow.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationPin } from "@fortawesome/free-solid-svg-icons";
 import { Loading } from "../Loading";
-
-let google:any
 
 const styles = [
   {
@@ -253,7 +252,7 @@ function addMarkers(map, launchpads, landpads) {
   if (launchpads && landpads) {
     const infoWindow = new google.maps.InfoWindow();
 
-    let markers: any[] = [];
+    let markers: any = [];
     launchpads.forEach((launchpad) => {
       const lat = launchpad.latitude;
       const lng = launchpad.longitude;

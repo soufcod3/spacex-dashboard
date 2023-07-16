@@ -5,7 +5,7 @@ import { ForthBrick } from "./bricks/ForthBrick";
 import { FifthBrick } from "./bricks/FifthBrick";
 import { Row } from "react-bootstrap";
 
-import sky from '../assets/bgspace.jpg'
+import sky from '../assets/bgspace.webp'
 
 export const Dashboard = () => {
   return (
