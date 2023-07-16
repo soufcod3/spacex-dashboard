@@ -205,10 +205,10 @@ export const ForthBrick = () => {
     <Brick md={8} mb={1} style={{ flex: "2", height: "300px" }}>
       <div className="box p-2 h-100">
         <div className="box-title">Zones de décollage et d'atterissage</div>
-        <div className="box-body p-2 h-100 d-flex gap-2">
+        <div className="box-body p-2 h-100 d-flex gap-2 flex-column flex-md-row">
           {launchpads && landpads ? (
             <>
-              <div className="box h-100 p-2 col-2">
+              <div className="box p-2 col-12 col-md-2 h-md-fit-content d-none d-md-block">
                 <div className="box-title">Légende</div>
                 <div className="box-body p-2">
                   <div className="d-flex gap-2 align-items-center mb-2">
@@ -231,7 +231,7 @@ export const ForthBrick = () => {
                   </div>
                 </div>
               </div>
-              <div className="box col-10 p-2">
+              <div className="box col-12 col-md-10 p-2 h-md-100">
                 <GoogleMapsProvider
                   googleMapsAPIKey="AIzaSyD3fBQWhzYo-W5j0h4Rob5lihe2WECC_CA"
                   mapContainer={mapContainer}

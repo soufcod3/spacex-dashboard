@@ -10,13 +10,13 @@ import sky from '../assets/sky.jpg'
 
 export const Dashboard = () => {
   return (
-    <section className="dashboard d-flex flex-wrap p-2 px-4" style={{ backgroundImage: `url(${sky})` }}>
-      <Row className="brick-row d-flex">
+    <section className="dashboard d-flex flex-column p-2 px-4 gap-2" style={{ backgroundImage: `url(${sky})` }}>
+      <Row className="">
         <FirstBrick />
         <SecondBrick />
         <ThirdBrick />
       </Row>
-      <Row className="brick-row">
+      <Row className="">
         <ForthBrick />
         <FifthBrick />
       </Row>

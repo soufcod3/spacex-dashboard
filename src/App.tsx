@@ -9,7 +9,7 @@ import { Dashboard } from './components/Dashboard'
 
 function App() {(0)
 
-  return <div className="app-container d-flex">
+  return <div className="app-container">
     <Dashboard/>
     <Navbar/>
   </div>

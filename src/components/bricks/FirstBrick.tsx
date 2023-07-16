@@ -1,6 +1,6 @@
 import { Brick } from "../Brick";
 import { Datum } from "../Datum";
-import { Form, OverlayTrigger, Spinner, Tooltip } from "react-bootstrap";
+import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import starshipImg from "../../assets/rockets/starship.png";
 import falcon1 from "../../assets/rockets/falcon1.png";
 import falcon9 from "../../assets/rockets/falcon9.png";
@@ -22,10 +22,13 @@ enum ROCKET_IMG {
 }
 
 const tooltip = (rocket: IRocket) => {
-  return <Tooltip id="tooltip">
-    <strong>{rocket.name}</strong><br />
-    <p>{rocket.description}</p>
-  </Tooltip>
+  return (
+    <Tooltip id="tooltip">
+      <strong>{rocket.name}</strong>
+      <br />
+      <p>{rocket.description}</p>
+    </Tooltip>
+  );
 };
 
 export const FirstBrick = () => {
@@ -70,8 +73,6 @@ export const FirstBrick = () => {
       }
     }
   }, [isActive, rockets]);
-
-  console.log(rockets)
 
   return (
     <Brick style={{ maxHeight: "285px" }}>
@@ -146,7 +147,8 @@ export const FirstBrick = () => {
                       alt=""
                       className="mx-4"
                       style={{ maxHeight: "5rem" }}
-                    /> <br />
+                    />{" "}
+                    <br />
                     <small className="rocket-name">{rocket.name}</small>
                   </div>
                 );

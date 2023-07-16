@@ -6,7 +6,7 @@ import { GrDocumentDownload } from "react-icons/gr";
 export const Navbar = () => {
   return (
     <nav className="py-3">
-      <div className="credit position-absolute d-none d-sm-block">
+      <div className="credit position-absolute d-none d-md-block">
         <img
           src={spaceXLogo}
           alt="Logo de Space X"

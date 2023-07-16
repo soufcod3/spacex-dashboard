@@ -6,7 +6,7 @@ import { News } from "../News";
 export const FifthBrick = () => {
   const { response: allNews } = useAxios("/v4/history");
   return (
-    <Brick mb={0} style={{ height: "300px" }}>
+    <Brick style={{ height: "300px" }} lastBrick>
       <div className="box p-2">
         <div className="box-title">Bon à savoir</div>
         <div
