@@ -11,7 +11,7 @@ export const FifthBrick = () => {
         <div className="box-body py-2 overflow-y-scroll" style={{ height: "250px" }}>
           {
             allNews && allNews.map((news, idx) => {
-          return <News news={news} key={} />
+          return <News news={news} key={idx} />
             })
           }
         </div>
