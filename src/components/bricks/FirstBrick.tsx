@@ -1,64 +1,109 @@
-import React from "react";
 import { Brick } from "../Brick";
 import { Datum } from "../Datum";
-import { IDatum, IRocket } from "../interfaces";
-import { Form } from "react-bootstrap";
+import { Form, OverlayTrigger, Spinner, Tooltip } from "react-bootstrap";
 import starshipImg from "../../assets/rockets/starship.png";
+import falcon1 from "../../assets/rockets/falcon1.png";
+import falcon9 from "../../assets/rockets/falcon9.png";
+import falconheavy from "../../assets/rockets/falconheavy.png";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo, faInfo, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
+import useAxios from "../../hooks/useAxios";
+import numbro from "numbro";
+import { useEffect, useState } from "react";
+import { IRocket } from "../interfaces";
 
-const DATA: IDatum[] = [
-  { title: "Employés", datum: 1234 },
-  { title: "Valeur", datum: "$123B" },
-  { title: "Lancements/an", datum: 123 },
-  { title: "Fusées", datum: 884 },
-  { title: "Capsules", datum: 144 },
-];
+enum ROCKET_IMG {
+  "Falcon 1" = falcon1,
+  "Falcon 9" = falcon9,
+  "Falcon Heavy" = falconheavy,
+  "Starship" = starshipImg,
+}
 
-const ROCKETS: IRocket[] = [
-  {
-    name: "Falcon Heavy",
-    active: true,
-    firstFlight: "2018-02-06",
-    description: "With the ability to lift into orbit over 54 metric tons (119,000 lb)--a mass equivalent to a 737 jetliner loaded with passengers, crew, luggage and fuel--Falcon Heavy can lift more than twice the payload of the next closest operational vehicle, the Delta IV Heavy, at one-third the cost.",
-    wikipedia: "https://en.wikipedia.org/wiki/Falcon_Heavy",
-    image: starshipImg,
-  },  {
-    name: "Falcon Heavy",
-    active: true,
-    firstFlight: "2018-02-06",
-    description: "With the ability to lift into orbit over 54 metric tons (119,000 lb)--a mass equivalent to a 737 jetliner loaded with passengers, crew, luggage and fuel--Falcon Heavy can lift more than twice the payload of the next closest operational vehicle, the Delta IV Heavy, at one-third the cost.",
-    wikipedia: "https://en.wikipedia.org/wiki/Falcon_Heavy",
-    image: starshipImg,
-  },  {
-    name: "Falcon Heavy",
-    active: true,
-    firstFlight: "2018-02-06",
-    description: "With the ability to lift into orbit over 54 metric tons (119,000 lb)--a mass equivalent to a 737 jetliner loaded with passengers, crew, luggage and fuel--Falcon Heavy can lift more than twice the payload of the next closest operational vehicle, the Delta IV Heavy, at one-third the cost.",
-    wikipedia: "https://en.wikipedia.org/wiki/Falcon_Heavy",
-    image: starshipImg,
-  },
-  {
-    name: "Falcon Heavy",
-    active: true,
-    firstFlight: "2018-02-06",
-    description: "With the ability to lift into orbit over 54 metric tons (119,000 lb)--a mass equivalent to a 737 jetliner loaded with passengers, crew, luggage and fuel--Falcon Heavy can lift more than twice the payload of the next closest operational vehicle, the Delta IV Heavy, at one-third the cost.",
-    wikipedia: "https://en.wikipedia.org/wiki/Falcon_Heavy",
-    image: starshipImg,
-  },
-];
+const tooltip = (rocket: IRocket) => {
+  return <Tooltip id="tooltip">
+    <strong>{rocket.name}</strong><br />
+    <p>{rocket.description}</p>
+  </Tooltip>
+};
 
 export const FirstBrick = () => {
+  const { response: companyInfo } = useAxios("/v4/company");
+
+  const { response: rockets } = useAxios("/v4/rockets");
+
+  const [locRockets, setLocRockets] = useState([]);
+
+  useEffect(() => {
+    if (rockets) {
+      setLocRockets(
+        rockets.map((rocket) => ({
+          name: rocket.name,
+          image: ROCKET_IMG[rocket.name],
+          description: rocket.description,
+          firstFlight: rocket.first_flight,
+          active: rocket.active,
+          wikipedia: rocket.wikipedia,
+        }))
+      );
+    }
+  }, [rockets]);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (isActive) {
+      setLocRockets(locRockets.filter((rocket) => rocket.active === true));
+    } else {
+      if (rockets) {
+        // Restore the original list of rockets when isActive is false
+        setLocRockets(
+          rockets.map((rocket) => ({
+            name: rocket.name,
+            image: ROCKET_IMG[rocket.name],
+            description: rocket.description,
+            firstFlight: rocket.first_flight,
+            active: rocket.active,
+            wikipedia: rocket.wikipedia,
+          }))
+        );
+      }
+    }
+  }, [isActive, rockets]);
+
+  console.log(rockets)
+
   return (
     <Brick style={{ maxHeight: "285px" }}>
       <div className="box p-2 mb-2">
         <p className="box-title">Informations générales</p>
         <div className="box-body p-2">
-          <div className="data w-100 d-flex justify-content-between gap-2">
-            {DATA.map((datum, idx) => {
-              return <Datum key={idx} datum={datum} />;
-            })}
-          </div>
+          {companyInfo ? (
+            <div className="data w-100 d-flex justify-content-between gap-2">
+              <Datum
+                datum={{ title: "Employés", datum: companyInfo.employees }}
+              />
+              <Datum
+                datum={{
+                  title: "Valeur",
+                  datum: `${numbro(companyInfo.valuation).formatCurrency()}`,
+                }}
+              />
+              <Datum
+                datum={{
+                  title: "Sites de lancement",
+                  datum: companyInfo.launch_sites,
+                }}
+              />
+              <Datum
+                datum={{
+                  title: "Sites de test",
+                  datum: companyInfo.test_sites,
+                }}
+              />
+            </div>
+          ) : (
+            <Spinner />
+          )}
         </div>
       </div>
       <div className="box p-2">
@@ -71,25 +116,44 @@ export const FirstBrick = () => {
                 type="switch"
                 id="test"
                 name={"active"}
-                checked={false}
-                onChange={() => null}
+                checked={isActive}
+                onChange={() => setIsActive(!isActive)}
               />
-                <small className="white-space-nowrap active-label">actives</small>
+              <small className="white-space-nowrap active-label">
+                actives seulement
+              </small>
             </div>
           </div>
         </div>
         <div className="box-body">
-          <div className="d-flex gap-2 overflow-x-auto">
-            {ROCKETS.map((rocket, idx) => {
-              return (
-                <div className="box text-center p-2" key={idx}>
-                  <span className="circle-info"><FontAwesomeIcon icon={faInfo} /></span>
-                  <img src={rocket.image} alt="" width={"25px"} />
-                  <small className="rocket-name">{rocket.name}</small>
-                </div>
-              );
-            })}
-          </div>
+          {locRockets ? (
+            <div className="d-flex gap-2 overflow-x-auto">
+              {locRockets.map((rocket, idx) => {
+                return (
+                  <div
+                    className="box text-center p-2"
+                    key={idx}
+                    style={{ height: "7rem" }}
+                  >
+                    <OverlayTrigger placement="right" overlay={tooltip(rocket)}>
+                      <span className="circle-info">
+                        <FontAwesomeIcon icon={faInfo} />
+                      </span>
+                    </OverlayTrigger>
+                    <img
+                      src={rocket.image}
+                      alt=""
+                      className="mx-4"
+                      style={{ maxHeight: "5rem" }}
+                    /> <br />
+                    <small className="rocket-name">{rocket.name}</small>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <Spinner />
+          )}
         </div>
       </div>
     </Brick>
