@@ -3,6 +3,7 @@ import useAxios from "../../hooks/useAxios";
 import { BarChart } from "../BarChart";
 import { Brick } from "../Brick";
 import { ILaunch } from "../interfaces";
+import { Loading } from "../Loading";
 
 const ROCKETS = {
   '5e9d0d95eda69955f709d1eb' : 'Falcon 1',
@@ -64,7 +65,7 @@ export const ThirdBrick = () => {
       <div className="box p-2">
         <div className="box-title">Historique des lancements</div>
         <div className="box-body p-2">
-          {chartData && <BarChart chartData={chartData} />}
+          {chartData ? <BarChart chartData={chartData} /> : <Loading />}
         </div>
       </div>
     </Brick>

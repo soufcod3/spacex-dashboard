@@ -11,6 +11,7 @@ import purplePin from "../../assets/pin-purple.png";
 import yellowPin from "../../assets/pin-yellow.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocation, faLocationPin } from "@fortawesome/free-solid-svg-icons";
+import { Loading } from "../Loading";
 
 const styles = [
   {
@@ -205,35 +206,48 @@ export const ForthBrick = () => {
       <div className="box p-2 h-100">
         <div className="box-title">Zones de décollage et d'atterissage</div>
         <div className="box-body p-2 h-100 d-flex gap-2">
-          <div className="box h-100 p-2 col-2">
-            <div className="box-title">Légende</div>
-            <div className="box-body p-2">
-              <div className="d-flex gap-2 align-items-center mb-2">
-                <FontAwesomeIcon
-                  icon={faLocationPin}
-                  className="text-warning"
-                />
-                <small className="wrap">Décollage [{launchpads && launchpads.length}]</small>
+          {launchpads && landpads ? (
+            <>
+              <div className="box h-100 p-2 col-2">
+                <div className="box-title">Légende</div>
+                <div className="box-body p-2">
+                  <div className="d-flex gap-2 align-items-center mb-2">
+                    <FontAwesomeIcon
+                      icon={faLocationPin}
+                      className="text-warning"
+                    />
+                    <small className="wrap">
+                      Décollage [{launchpads && launchpads.length}]
+                    </small>
+                  </div>
+                  <div className="d-flex gap-2 align-items-center">
+                    <FontAwesomeIcon
+                      icon={faLocationPin}
+                      className="text-purple"
+                    />
+                    <small className="wrap">
+                      Atterissage [{landpads && landpads.length}]
+                    </small>
+                  </div>
+                </div>
               </div>
-              <div className="d-flex gap-2 align-items-center">
-                <FontAwesomeIcon icon={faLocationPin} className="text-purple" />
-                <small className="wrap">Atterissage [{landpads && landpads.length}]</small>
+              <div className="box col-10 p-2">
+                <GoogleMapsProvider
+                  googleMapsAPIKey="AIzaSyD3fBQWhzYo-W5j0h4Rob5lihe2WECC_CA"
+                  mapContainer={mapContainer}
+                  mapOptions={mapOptions}
+                  onLoadMap={onLoad}
+                >
+                  <div
+                    ref={(node) => setMapContainer(node)}
+                    style={{ height: "100%", width: "100%" }}
+                  ></div>
+                </GoogleMapsProvider>
               </div>
-            </div>
-          </div>
-          <div className="box col-10 p-2">
-            <GoogleMapsProvider
-              googleMapsAPIKey="AIzaSyD3fBQWhzYo-W5j0h4Rob5lihe2WECC_CA"
-              mapContainer={mapContainer}
-              mapOptions={mapOptions}
-              onLoadMap={onLoad}
-            >
-              <div
-                ref={(node) => setMapContainer(node)}
-                style={{ height: "100%", width: "100%" }}
-              ></div>
-            </GoogleMapsProvider>
-          </div>
+            </>
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </Brick>

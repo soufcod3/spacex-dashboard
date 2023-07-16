@@ -12,6 +12,7 @@ import useAxios from "../../hooks/useAxios";
 import numbro from "numbro";
 import { useEffect, useState } from "react";
 import { IRocket } from "../interfaces";
+import { Loading } from "../Loading";
 
 enum ROCKET_IMG {
   "Falcon 1" = falcon1,
@@ -102,7 +103,7 @@ export const FirstBrick = () => {
               />
             </div>
           ) : (
-            <Spinner />
+            <Loading />
           )}
         </div>
       </div>
@@ -152,7 +153,7 @@ export const FirstBrick = () => {
               })}
             </div>
           ) : (
-            <Spinner />
+            <Loading />
           )}
         </div>
       </div>

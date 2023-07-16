@@ -22,10 +22,10 @@ const options = {
   hour: "numeric",
   minute: "numeric",
 };
+
 const frenchDate = new Date(nextLaunch).toLocaleString("fr-FR", options);
 
 export const SecondBrick = () => {
-  // const { response, error, loading } = useAxios('/v4/launches/next')
 
   const renderer = ({
     days,
@@ -41,22 +41,23 @@ export const SecondBrick = () => {
       // Render a countdown
       return (
         <div className="d-flex gap-3 align-items-center justify-content-center">
-          <div className="box-1">
+          <div className="box">
             <Datum datum={{ title: "Jours", datum: days }}></Datum>
           </div>
-          <div className="box-1">
+          <div className="box">
             <Datum datum={{ title: "Heures", datum: hours }}></Datum>
           </div>
-          <div className="box-1">
+          <div className="box">
             <Datum datum={{ title: "Minutes", datum: minutes }}></Datum>
           </div>
-          <div className="box-1">
+          <div className="box">
             <Datum datum={{ title: "Secondes", datum: seconds }}></Datum>
           </div>
         </div>
       );
     }
   };
+
   return (
     <Brick style={{ maxHeight: "285px" }}>
       <div className="box p-2">
