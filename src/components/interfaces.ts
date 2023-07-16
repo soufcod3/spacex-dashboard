@@ -46,3 +46,12 @@ export interface ILaunch {
   wikipedia: any,
   auto_update: any
 }
+
+export interface INews {
+  details: string,
+  event_date_unix: number,
+  event_date_utc: string,
+  id: string,
+  links: any,
+  title: string
+}

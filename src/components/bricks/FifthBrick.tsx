@@ -1,13 +1,22 @@
-import React from 'react'
-import { Brick } from '../Brick'
-import { Button, Card } from 'react-bootstrap'
+import useAxios from "../../hooks/useAxios";
+import { Brick } from "../Brick";
+import { News } from "../News";
 
 export const FifthBrick = () => {
-  return <Brick mb={0}>
-        <Card.Title>Card Title</Card.Title>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the bulk of the card's content.
-      </Card.Text>
-      <Button variant='primary'>Go somewhere</Button>
-  </Brick>
-}
+  const { response: allNews, error, loading } = useAxios("/v4/history");
+console.log(allNews)
+  return (
+    <Brick mb={0} style={{ height: "300px" }}>
+      <div className="box p-2">
+        <div className="box-title">Bon à savoir</div>
+        <div className="box-body py-2 overflow-y-scroll" style={{ height: "250px" }}>
+          {
+            allNews && allNews.map((news) => {
+          return <News news={news} />
+            })
+          }
+        </div>
+      </div>
+    </Brick>
+  );
+};

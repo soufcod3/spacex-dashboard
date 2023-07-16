@@ -190,6 +190,51 @@ nav {
   color: #b900ff;
 }
 
+.bg-purple {
+  background-color: #b900ff;
+}
+
 .wrap {
   white-space: pre-wrap;
+}
+
+.badge {
+  width: fit-content;
+}
+
+.gm-style-iw-d {
+  overflow: hidden !important;
+}
+
+.news-title {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.news-date {
+  font-size: 10px;
+  padding-left: 2px;
+}
+
+.news-image {
+  background-color: rgba(54, 54, 54, 0.321);
+  border-radius: 5px;
+}
+
+.news-description {
+  font-size: 12px;
+  text-transform: none;
+}
+
+.text-end {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+a {
+  color: white!important;
+  text-decoration: none !important;
 }

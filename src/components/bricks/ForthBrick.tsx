@@ -194,7 +194,6 @@ export const ForthBrick = () => {
     loading: landpadsLoading,
   } = useAxios("/v4/landpads");
 
-  console.log(landpads);
   const [mapContainer, setMapContainer] = useState();
   const onLoad = useCallback(
     (map) => addMarkers(map, launchpads, landpads),
@@ -214,11 +213,11 @@ export const ForthBrick = () => {
                   icon={faLocationPin}
                   className="text-warning"
                 />
-                <small className="wrap">Zones de décollage</small>
+                <small className="wrap">Décollage [{launchpads && launchpads.length}]</small>
               </div>
               <div className="d-flex gap-2 align-items-center">
                 <FontAwesomeIcon icon={faLocationPin} className="text-purple" />
-                <small className="wrap">Zones d'atterissage</small>
+                <small className="wrap">Atterissage [{landpads && landpads.length}]</small>
               </div>
             </div>
           </div>
@@ -241,7 +240,7 @@ export const ForthBrick = () => {
   );
 };
 
-function addMarkers(map, landpads, launchpads) {
+function addMarkers(map, launchpads, landpads) {
   if (launchpads && landpads) {
     const infoWindow = new google.maps.InfoWindow();
 
@@ -258,9 +257,10 @@ function addMarkers(map, landpads, launchpads) {
       marker.addListener("click", () => {
         infoWindow.setPosition({ lat, lng });
         infoWindow.setContent(`
-          <div class="info-window p-2 text-center">
+          <div class="info-window p-2 text-center d-flex flex-column">
             <p class="fw-bold text-dark">${launchpad.full_name}</p>
             <small class="text-dark">${launchpad.locality}, ${launchpad.region} </small>
+            <span class="badge bg-warning mx-auto mt-1">Zone de décollage</span>
           </div>
         `);
         infoWindow.open({ map });
@@ -281,9 +281,10 @@ function addMarkers(map, landpads, launchpads) {
       marker.addListener("click", () => {
         infoWindow.setPosition({ lat, lng });
         infoWindow.setContent(`
-          <div class="info-window p-2 text-center">
+          <div class="info-window p-2 text-center d-flex flex-column">
             <p class="fw-bold text-dark">${landpad.full_name}</p>
             <small class="text-dark">${landpad.locality}, ${landpad.region} </small>
+            <span class="badge bg-purple mx-auto mt-1">Zone d'atterissage</span>
           </div>
         `);
         infoWindow.open({ map });
@@ -291,13 +292,5 @@ function addMarkers(map, landpads, launchpads) {
 
       markers.push(marker);
     });
-
-    console.log("marker", markers);
-
-    // new MarkerClusterer({
-    //   markers,
-    //   map,
-    //   // algorithm: new SuperClusterAlgorithm({ radius: 5 }),
-    // });
   }
 }
